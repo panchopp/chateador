@@ -1,0 +1,30 @@
+<h2>
+  Mensajes
+</h2>
+{% if messages  %}
+<table class="ui celled table">
+        <tr>
+          <th>Alias Autor</th>
+          <th>Mensaje</th>
+          <th>Timestamp</th>
+        </tr>
+
+        {% for message in messages %}
+        <tr>
+          <td>
+            <span style="vertical-align: middle;">{{ message.author }}</span>
+          </td>
+          <td>
+            <span style="vertical-align: middle;">{{ message.body }}</span>
+          </td>
+          <td>
+            <span style="vertical-align: middle;">{{ message.timestamp }}</span>
+          </td>
+        </tr>
+        {% endfor %}
+</table>
+<div> <a href="{% url 'messages' prev_page_num %}">Anterior Página </a><a href="{% url 'messages' next_page_num %}"> Siguiente Página</a>
+
+{% else  %}
+    <p>No hay mensajes</p>
+{% endif  %}
