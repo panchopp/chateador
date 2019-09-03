@@ -24,6 +24,9 @@
         {% endfor %}
 </table>
 <div> <a href="{% url 'messages' prev_page_num %}">Anterior Página </a><a href="{% url 'messages' next_page_num %}"> Siguiente Página</a>
+</div>
+
+<a href="{% url 'send_message' %}">Escribir Nuevo Mensaje </a>
 
 {% else  %}
     <p>No hay mensajes</p>
