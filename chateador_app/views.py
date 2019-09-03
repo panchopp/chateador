@@ -21,9 +21,9 @@ class Message:
         self.author = author
 chat = Chat()
 
-for i in range(120):
-    message1 = Message("blablabalbal", "pancho{}".format(i))
-    chat.add(message1)
+# for i in range(120):
+#     message1 = Message("blablabalbal", "pancho{}".format(i))
+#     chat.add(message1)
 
 
 # Create your views here.
@@ -62,10 +62,10 @@ def messages(request, page):
         return redirect("") # Back to home
     else:
         if request.method == "GET":
-            if page < 19:
+            if page < min(19,(len(chat.get_last_100_messages())-1)//5):
                 next_page_num = page + 1
             else:
-                next_page_num = 19
+                next_page_num = min(19,(len(chat.get_last_100_messages())-1)//5)
             if page <= 0:
                 prev_page_num = 0
             else:
